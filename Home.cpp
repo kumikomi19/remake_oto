@@ -1,6 +1,6 @@
 #include "Home.h"
 Color ho_cr;
-
+//テスト、反映されるかな？
 void Home::Make_Home() {
 	int Start = LoadGraph(PIC_Start);
 	SetBackgroundColor(255, 255, 255);//ホーム画面の背景色設定
