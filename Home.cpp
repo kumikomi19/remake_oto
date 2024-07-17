@@ -1,6 +1,7 @@
 #include "Home.h"
 Color ho_cr;
-//テスト、反映されるかな？
+
+
 void Home::Make_Home() {
 	int Start = LoadGraph(PIC_Start);
 	SetBackgroundColor(255, 255, 255);//ホーム画面の背景色設定
@@ -17,13 +18,15 @@ void Home::Make_Home() {
         // スタートボタンにカーソルがあるときの処理
         if (Mouse_X >= Home_Start_x1 && Mouse_X <= Home_Start_x2 && Mouse_Y >= Home_Start_y1 && Mouse_Y >= Home_Start_y2) {
             if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0) {
-          
+                DrawBox(Home_Start_x1 + 5, Home_Start_y1 + 5, Home_Start_x2 + 5, Home_Start_y2 + 5, ho_cr.Red, FALSE);
+                DrawBox(Home_Start_x1 + 10, Home_Start_y1 + 10, Home_Start_x2 + 10, Home_Start_y2 + 10, ho_cr.Red, FALSE);
+                DrawBox(Home_Start_x1 + 15, Home_Start_y1 + 15, Home_Start_x2 + 15, Home_Start_y2 + 15, ho_cr.Red, FALSE);
                 break;
             }
             else {
-                DrawBox(Home_Start_x1 +5, Home_Start_y1 +5, Home_Start_x2 +5, Home_Start_y2 +5, ho_cr.Red, FALSE);
-                DrawBox(Home_Start_x1 +10, Home_Start_y1 +10, Home_Start_x2 +10, Home_Start_y2 +10, ho_cr.Red, FALSE);
-                DrawBox(Home_Start_x1 +15, Home_Start_y1 +15, Home_Start_x2 +15, Home_Start_y2 +15, ho_cr.Red, FALSE);
+                DrawBox(Home_Start_x1 +5, Home_Start_y1 +5, Home_Start_x2 +5, Home_Start_y2 +5, ho_cr.White, FALSE);
+                DrawBox(Home_Start_x1 +10, Home_Start_y1 +10, Home_Start_x2 +10, Home_Start_y2 +10, ho_cr.White, FALSE);
+                DrawBox(Home_Start_x1 +15, Home_Start_y1 +15, Home_Start_x2 +15, Home_Start_y2 +15, ho_cr.White, FALSE);
                 break;
             }
         }
