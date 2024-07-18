@@ -27,14 +27,17 @@ int Notes_List::Notes(int count, int start, Notes_State state, Notes_Hight hight
 	}
 	/*****‚±‚±‚©‚ç‰º‚Åƒm[ƒc‚Ì“®‚«‚ðŽwŽ¦******/
 
-	DrawExtendGraph(Home_Tilte_x1, Home_Tilte_y1, Home_Tilte_x2, Home_Tilte_y2,NOTES , TRUE);
+	if (count >= start) {
+		notes_x = notes_x - (count - start);
+			DrawExtendGraph(notes_x, notes_y, notes_x+50, notes_y+50, NOTES, TRUE);
+	}
 
 
 
-
+	return 0;
 
 }
 
 void Notes_List::List_A(int count) {
-	
+	Notes(count, 0, LEFT, UP);
 }

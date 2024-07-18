@@ -1,5 +1,7 @@
 #include"song.h"
 
+Notes_List so_nl;
+
 int Song_composition::Song(int counter) {
 	int notes_line = LoadGraph(PIC_PLAY_Line);
 	if (counter == 0) {
@@ -11,7 +13,7 @@ int Song_composition::Song(int counter) {
 		DrawExtendGraph(PLAY_Notes_Line_x1, PLAY_Notes_Line_MID_y1, PLAY_Notes_Line_x2, PLAY_Notes_Line_MID_y2, notes_line, TRUE);
 		DrawExtendGraph(PLAY_Notes_Line_x1, PLAY_Notes_Line_BTM_y1, PLAY_Notes_Line_x2, PLAY_Notes_Line_BTM_y2, notes_line, TRUE);
 
-		//notes_list(int counter)
+		so_nl.List_A(counter);
 
 		//キャラクタークラスを読み込む
 
