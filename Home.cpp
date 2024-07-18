@@ -1,60 +1,49 @@
 #include "Home.h"
 Color ho_cr;
 
+int Button = 0;//1でスタート、２で終了
 
-void Home::Make_Home() {
+int Home::Make_Home() {
 	int Start = LoadGraph(PIC_Start);
-	SetBackgroundColor(255, 255, 255);//ホーム画面の背景色設定
-	ClearDrawScreen();
+	
 	DrawExtendGraph(Home_Tilte_x1, Home_Tilte_y1, Home_Tilte_x2, Home_Tilte_y2, Start, TRUE);//タイトル画像
 	DrawExtendGraph(Home_Start_x1, Home_Start_y1, Home_Start_x2, Home_Start_y2, Start, TRUE);//スタートボタン
 	DrawExtendGraph(Home_End_x1, Home_End_y1, Home_End_x2, Home_End_y2, Start, TRUE);//終了ボタン
-    while (1)
-    {
-        // マウスの位置を取得&座標の表示
-        GetMousePoint(&Mouse_X, &Mouse_Y);
-        DrawBox(180, 180, 400, 300, ho_cr.White, TRUE);
-        DrawFormatString(180, 180, ho_cr.Green, "座標Ｘ %d　　座標Ｙ %d", Mouse_X, Mouse_Y);
-        // スタートボタンにカーソルがあるときの処理
-        if (Mouse_X >= Home_Start_x1 && Mouse_X <= Home_Start_x2 && Mouse_Y >= Home_Start_y1 && Mouse_Y >= Home_Start_y2) {
-            if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0) {
-                DrawBox(Home_Start_x1 + 5, Home_Start_y1 + 5, Home_Start_x2 + 5, Home_Start_y2 + 5, ho_cr.Red, FALSE);
-                DrawBox(Home_Start_x1 + 10, Home_Start_y1 + 10, Home_Start_x2 + 10, Home_Start_y2 + 10, ho_cr.Red, FALSE);
-                DrawBox(Home_Start_x1 + 15, Home_Start_y1 + 15, Home_Start_x2 + 15, Home_Start_y2 + 15, ho_cr.Red, FALSE);
-                break;
-            }
-            else {
-                DrawBox(Home_Start_x1 +5, Home_Start_y1 +5, Home_Start_x2 +5, Home_Start_y2 +5, ho_cr.White, FALSE);
-                DrawBox(Home_Start_x1 +10, Home_Start_y1 +10, Home_Start_x2 +10, Home_Start_y2 +10, ho_cr.White, FALSE);
-                DrawBox(Home_Start_x1 +15, Home_Start_y1 +15, Home_Start_x2 +15, Home_Start_y2 +15, ho_cr.White, FALSE);
-                break;
-            }
-        }
-        // 終了ボタンにカーソルがあるときの処理
-        else if (Mouse_X >= Home_End_x1 && Mouse_X <= Home_End_x2 && Mouse_Y >= Home_End_y1 && Mouse_Y >= Home_End_y2) {
+    
 
-            if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0) {
-                DxLib_End();
-            }
-            else {
-                
-                break;
-            }
-        }
-        else {
-            
-            break;
-        }
+    /*D、Kを押すとプレイに、C、Mを押すと終了に、spaseで決定*/
 
-        // メッセージ処理
-        if (ProcessMessage() == -1)
-        {
-            break;    // エラーが起きたらループを抜ける
-        }
+    if (CheckHitKey(KEY_INPUT_UP) == 1) {
+        Button = 1;
+        DrawBox(Home_End_x1 - 3, Home_End_y1 - 3, Home_End_x2 + 3, Home_End_y2 + 3, ho_cr.White, FALSE);
+        DrawBox(Home_End_x1 - 6, Home_End_y1 - 6, Home_End_x2 + 6, Home_End_y2 + 6, ho_cr.White, FALSE);
+        DrawBox(Home_End_x1 - 9, Home_End_y1 - 9, Home_End_x2 + 9, Home_End_y2 + 9, ho_cr.White, FALSE);
 
-        // 一定時間待つ
-        WaitTimer(100);
+        DrawBox(Home_Start_x1 - 3, Home_Start_y1 - 3, Home_Start_x2 + 3, Home_Start_y2 + 3, ho_cr.Blue, FALSE);
+        DrawBox(Home_Start_x1 - 6, Home_Start_y1 - 6, Home_Start_x2 + 6, Home_Start_y2 + 6, ho_cr.Red, FALSE);
+        DrawBox(Home_Start_x1 - 9, Home_Start_y1 - 9, Home_Start_x2 + 9, Home_Start_y2 + 9, ho_cr.Yellow, FALSE);
+        if (Button == 1 && CheckHitKey(KEY_INPUT_SPACE)) {
+            return 1;
+        }
+        
+    }
+    else if (CheckHitKey(KEY_INPUT_DOWN) == 1 ) {
+        Button = 2;
+        DrawBox(Home_Start_x1 - 3, Home_Start_y1 - 3, Home_Start_x2 + 3, Home_Start_y2 + 3, ho_cr.White, FALSE);
+        DrawBox(Home_Start_x1 - 6, Home_Start_y1 - 6, Home_Start_x2 + 6, Home_Start_y2 + 6, ho_cr.White, FALSE);
+        DrawBox(Home_Start_x1 - 9, Home_Start_y1 - 9, Home_Start_x2 + 9, Home_Start_y2 + 9, ho_cr.White, FALSE);
+
+        DrawBox(Home_End_x1 - 3, Home_End_y1 - 3, Home_End_x2 + 3, Home_End_y2 + 3, ho_cr.Blue, FALSE);
+        DrawBox(Home_End_x1 - 6, Home_End_y1 - 6, Home_End_x2 + 6, Home_End_y2 + 6, ho_cr.Red, FALSE);
+        DrawBox(Home_End_x1 - 9, Home_End_y1 - 9, Home_End_x2 + 9, Home_End_y2 + 9, ho_cr.Yellow, FALSE);
+        if (Button == 2 && CheckHitKey(KEY_INPUT_SPACE)) {
+            return 2;
+        }
+    }
+    else {
+        return 0;
     }
 
-
+        WaitTimer(100);
+       
 }

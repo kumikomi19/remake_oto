@@ -17,6 +17,11 @@
 #define Home_End_x2 1100
 #define Home_End_y2 800
 
+#define OPSION_BOX_x1 500
+#define OPSION_BOX_y1 700
+#define OPSION_BOX_x2 1100
+#define OPSION_BOX_y2 800
+
 class Color {
 public:
 	int Black = GetColor(0, 0, 0);
@@ -28,16 +33,12 @@ public:
 	int Play_Flame_01 = GetColor(130, 108, 128);
 };
 
+
 typedef enum {
 	HOME,
 	PLAY,
-}State;
-
-typedef enum {
-	ENTRY,
-	DO,
-	EXIT
-}Action;
+	OPTION
+}Mode_State;
 
 typedef enum {
 	ZERO,

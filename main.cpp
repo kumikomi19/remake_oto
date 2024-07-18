@@ -1,79 +1,76 @@
 #include "main.h"
 #include "DxLib.h"
 #include "Home.h"
+#include "Song.h"
 
 Color cr;
 Home hm;
-volatile State m_state = HOME;
-volatile Action m_action = ENTRY;
+Song_composition sc;
 
+volatile Mode_State m_state = HOME;
+volatile int Ms_Counter = 0;
+Mode_State GetState(){
+  return m_state;
+}
 
-
-void set_State(State sta) {
-    m_state = sta;
-}
-State get_State() {
-    return m_state;
-}
-void set_Action(Action act) {
-    m_action = act;
-}
-Action get_Action() {
-    return m_action;
-}
-void setStateAction(State sta, Action act) {
-    set_State(sta);
-    set_Action(act);
+void SetState(Mode_State m) {
+    m_state = m;
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
     ChangeWindowMode(TRUE);
     SetGraphMode(1600, 900, 32);//ここをいじるなら全部の座標が狂うから覚悟してね！
-
+    SetBackgroundColor(255, 255, 255);//ホーム画面の背景色設定
     if (DxLib_Init() == -1)
     {
         return -1;
     }
     //ここから下、ゲームコントロール関連
-
+    SetDrawScreen(DX_SCREEN_BACK);
     while (1) {
-
-        switch (get_State()) {
+        
+        switch (GetState())
+        {
         case HOME:
-            switch (get_Action())
-            {
-            case ENTRY: //ここでタイトル、ふれーむ、ボタンの描写  
-          
-                hm.Make_Home();
-                break;
-            case DO: //ボタンの操作はここで
-                break;
-            case EXIT:
-                return 0;
+
+            Ms_Counter = 0;
+            hm.Make_Home();
+            if (hm.Make_Home() == 1) {
+                SetState(PLAY);
+            }
+            else if (hm.Make_Home() == 2) {
+                
+                DxLib_End();
+            }
+            
+            break;
+        case PLAY:
+            ClearDrawScreen();
+            sc.Song_A(Ms_Counter);
+            Ms_Counter ++;
+            if (sc.Song_A(Ms_Counter) == 1) {
+                SetState(HOME);
+            }
+            else if (sc.Song_A(Ms_Counter) == 2) {
+
+                SetState(OPTION);
             }
             break;
 
-
-        case PLAY:
-            switch (get_Action())
-            {
-            case ENTRY: //ここでタイトル、ふれーむ、ボタンの描写      
-
-                setStateAction(HOME, DO);
-                break;
-            case DO: //ボタンの操作はここで
-
-                break;
-            case EXIT:
-
-                return 0;
-            }
+        case OPTION:
+            break;
+        default:
             break;
         }
+        
+        
+        if (CheckHitKey(KEY_INPUT_SPACE) == 1) {
+            break;
+        }
+        ScreenFlip();
     }
 
-    WaitKey();
     DxLib_End();
     return 0;
 }

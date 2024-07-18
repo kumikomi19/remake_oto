@@ -3,7 +3,7 @@
 #include "main.h"
 class Home {
 private:
-	int Mouse_X, Mouse_Y;
+	
 public:
-	void Make_Home();
+	int Make_Home();
 };
