@@ -4,5 +4,9 @@
 
 class Song_composition {
 	public:
-		int Song_A(int counter);
+		
+		int Song(int counter);
+
+	
+		
 };

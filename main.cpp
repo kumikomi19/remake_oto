@@ -47,12 +47,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             break;
         case PLAY:
             ClearDrawScreen();
-            sc.Song_A(Ms_Counter);
+            sc.Song(Ms_Counter);
             Ms_Counter ++;
-            if (sc.Song_A(Ms_Counter) == 1) {
+            if (sc.Song(Ms_Counter) == 1) {
                 SetState(HOME);
             }
-            else if (sc.Song_A(Ms_Counter) == 2) {
+            else if (sc.Song(Ms_Counter) == 2) {
 
                 SetState(OPTION);
             }
@@ -65,7 +65,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         }
         
         
-        if (CheckHitKey(KEY_INPUT_SPACE) == 1) {
+        if (CheckHitKey(KEY_INPUT_ESCAPE) == 1) {
             break;
         }
         ScreenFlip();
