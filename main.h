@@ -5,6 +5,7 @@
 #define PIC_HOME_End "pic/Home_End.png"
 #define PIC_PLAY_Line "pic/Play_notes_line.png"
 #define PIC_PLAY_NOTES_LEFT "pic/Play_Notes_L.png"
+#define PIC_PLAY_HITBOX "pic/Play_notes_hit.png"
 
 //*************Å´HOMEä÷òAÅ´*************
 #define Home_Tilte_x1 300
@@ -20,6 +21,8 @@
 #define Home_End_x2 1100
 #define Home_End_y2 800
 //*************Å´Playä÷òAÅ´*************
+#define PLAY_HITBOX_x1 180
+#define PLAY_HITBOX_x2 280
 #define PLAY_Notes_Line_x1 400
 #define PLAY_Notes_Line_x2 1600
 #define PLAY_Notes_Line_UP_y1 300
@@ -28,11 +31,21 @@
 #define PLAY_Notes_Line_MID_y2 600
 #define PLAY_Notes_Line_BTM_y1 700
 #define PLAY_Notes_Line_BTM_y2 800
+
+#define LEFT 1
+#define RIGHT 2
+#define DOWN 3
+#define UP 1
+#define MID 2
+#define UNDER 3
+#define NOTES_SPEED 5
 //*************Å´OPTIONä÷òAÅ´*************
 #define OPSION_BOX_x1 500
 #define OPSION_BOX_y1 700
 #define OPSION_BOX_x2 1100
 #define OPSION_BOX_y2 800
+
+
 
 class Color {
 public:
