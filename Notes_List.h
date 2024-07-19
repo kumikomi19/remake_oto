@@ -1,14 +1,16 @@
 #pragma once
 #include "DxLib.h"
-
+#include "main.h"
 class Notes_List {
 private:
-	typedef enum {
-		LEFT,
-		RIGHT,
-		DOWN,
-	}Notes_State;
+#define LEFT 1
+#define RIGHT 2
+#define DOWN 3
+#define UP 1
+#define MID 2
+#define UNDER 3
+
 public:
-	int Notes(int count, int start, Notes_State notes, int hight);
+	int Notes(int count, int start, int notes, int hight);
 	void List_A(int count);
 };

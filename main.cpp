@@ -8,7 +8,6 @@ Home hm;
 Song_composition sc;
 
 volatile Mode_State m_state = HOME;
-volatile int Ms_Counter = 0;
 Mode_State GetState(){
   return m_state;
 }
@@ -29,12 +28,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     //ここから下、ゲームコントロール関連
     SetDrawScreen(DX_SCREEN_BACK);
     while (1) {
-        
         switch (GetState())
         {
         case HOME:
 
-            Ms_Counter = 0;
             hm.Make_Home();
             if (hm.Make_Home() == 1) {
                 SetState(PLAY);
@@ -43,16 +40,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
                 
                 DxLib_End();
             }
-            
+            ScreenFlip();
             break;
         case PLAY:
             ClearDrawScreen();
-            sc.Song(Ms_Counter);
-            Ms_Counter ++;
-            if (sc.Song(Ms_Counter) == 1) {
+            sc.Song();
+           
+            if (sc.Song() == 1) {
                 SetState(HOME);
             }
-            else if (sc.Song(Ms_Counter) == 2) {
+            else if (sc.Song() == 2) {
 
                 SetState(OPTION);
             }
@@ -68,7 +65,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         if (CheckHitKey(KEY_INPUT_ESCAPE) == 1) {
             break;
         }
-        ScreenFlip();
+        
     }
 
     DxLib_End();

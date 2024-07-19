@@ -1,7 +1,8 @@
 #include "Notes_List.h"
 
+Color nl_cr;
 
-int Notes_List::Notes(int count, int start, Notes_State state, Notes_Hight hight) {
+int Notes_List::Notes(int count, int start, int state, int hight) {
 	int notes_x = 1600;
 	int notes_y;
 	int NOTES;//画像用変数
@@ -17,24 +18,26 @@ int Notes_List::Notes(int count, int start, Notes_State state, Notes_Hight hight
 	}
 
 	if (hight == UP) {
-		notes_y = 350;
+		notes_y = 300;
 	}
 	else if (hight == MID) {
-		notes_y = 550;
+		notes_y = 500;
 	}
-	else if (hight == DOWN) {
-		notes_y = 750;
+	else if (hight == UNDER) {
+		notes_y = 700;
 	}
 	/*****ここから下でノーツの動きを指示******/
+	
+	if (count >= start) {
+		notes_x = notes_x - (count - start);
+		DrawExtendGraph(notes_x, notes_y, notes_x + 100, notes_y + 100, NOTES, TRUE);
+	}
 
-	DrawExtendGraph(Home_Tilte_x1, Home_Tilte_y1, Home_Tilte_x2, Home_Tilte_y2,NOTES , TRUE);
-
-
-
-
+	return 0;
 
 }
 
 void Notes_List::List_A(int count) {
+	Notes(count, 0, LEFT, UP);
 	
 }

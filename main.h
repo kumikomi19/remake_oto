@@ -4,6 +4,7 @@
 #define PIC_HOME_Start "pic/Home_Start.png" 
 #define PIC_HOME_End "pic/Home_End.png"
 #define PIC_PLAY_Line "pic/Play_notes_line.png"
+#define PIC_PLAY_NOTES_LEFT "pic/Play_Notes_L.png"
 
 //*************Å´HOMEä÷òAÅ´*************
 #define Home_Tilte_x1 300
@@ -50,6 +51,8 @@ typedef enum {
 	PLAY,
 	OPTION
 }Mode_State;
+
+
 
 typedef enum {
 	ZERO,
