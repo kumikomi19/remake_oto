@@ -3,12 +3,13 @@
 Color nl_cr;
 volatile int combo = 0;
 volatile int Hit_qualification = 1; //0:判定なし　1:判定あり 2:ヒット
+
 int Notes_List::Notes(int count, int start, int notes, int hight , int Hit_position) {
 	
 	int notes_x = 1600;
 	int notes_y;
 	int NOTES;//画像用変数
-
+	int return_num = 0;
 	if (notes == LEFT) {
 		//	画像を用意してここに張り付ける
 		NOTES = LoadGraph(PIC_PLAY_NOTES_LEFT);
@@ -48,6 +49,7 @@ int Notes_List::Notes(int count, int start, int notes, int hight , int Hit_posit
 
 		if (Hit_qualification == 2) {
 			combo++;
+			return_num = 2;
 			Hit_qualification = 0;
 		}
 
@@ -56,6 +58,7 @@ int Notes_List::Notes(int count, int start, int notes, int hight , int Hit_posit
 		}
 		else if (notes_x + 50 == PLAY_HITBOX_x1 && Hit_qualification == 1) {
 			combo = 0;
+			return_num = 1;
 		}
 	}
 
@@ -78,8 +81,8 @@ int Notes_List::Notes(int count, int start, int notes, int hight , int Hit_posit
 	//コンボエフェクトの表示
 	DrawFormatString(180, 270, nl_cr.Blue, "%dCOMBO!!",combo);
 
-	return 0;
-
+	return return_num;
+	//返り値…0:特に何もない　1:ミス　2:ヒット
 }
 
 void Notes_List::List_A(int count, int Hit_position) {

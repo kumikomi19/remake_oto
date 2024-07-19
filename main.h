@@ -6,6 +6,7 @@
 #define PIC_PLAY_Line "pic/Play_notes_line.png"
 #define PIC_PLAY_NOTES_LEFT "pic/Play_Notes_L.png"
 #define PIC_PLAY_HITBOX "pic/Play_notes_hit.png"
+#define PIC_PLAY_TETO_FLAME "pic/Play_teto_flame"
 
 //*************↓HOME関連↓*************
 #define Home_Tilte_x1 300
@@ -21,6 +22,7 @@
 #define Home_End_x2 1100
 #define Home_End_y2 800
 //*************↓Play関連↓*************
+//リズム部門関連
 #define PLAY_HITBOX_x1 180
 #define PLAY_HITBOX_x2 280
 #define PLAY_Notes_Line_x1 400
@@ -31,7 +33,6 @@
 #define PLAY_Notes_Line_MID_y2 600
 #define PLAY_Notes_Line_BTM_y1 700
 #define PLAY_Notes_Line_BTM_y2 800
-
 #define LEFT 1
 #define RIGHT 2
 #define DOWN 3
@@ -39,6 +40,11 @@
 #define MID 2
 #define UNDER 3
 #define NOTES_SPEED 5
+//テトリス部門間連携
+#define Play_teto_flame_x1 1050
+#define Play_teto_flame_y1 50
+#define Play_teto_flame_x2 1550
+#define Play_teto_flame_y2 1000
 //*************↓OPTION関連↓*************
 #define OPSION_BOX_x1 500
 #define OPSION_BOX_y1 700

@@ -9,6 +9,7 @@ int Song_composition::Song(){
 
 	int notes_line = LoadGraph(PIC_PLAY_Line);
 	int notes_hitbox = LoadGraph(PIC_PLAY_HITBOX);
+	int teto_flame = LoadGraph(PIC_PLAY_TETO_FLAME);
 	int Hit_position = MID;
 	bool move_qualification = FALSE;
 	SetDrawScreen(DX_SCREEN_BACK);
@@ -31,7 +32,6 @@ int Song_composition::Song(){
 		if (CheckHitKeyAll() == 0) {
 			move_qualification = TRUE;
 		}
-		
 		if (move_qualification == TRUE) {
 			if (CheckHitKey(KEY_INPUT_UP) == 1) {
 				if (Hit_position == MID) {
@@ -52,7 +52,6 @@ int Song_composition::Song(){
 				move_qualification = FALSE;
 			}
 		}
-			
 		switch (Hit_position) {
 		case UP:
 			DrawExtendGraph(PLAY_HITBOX_x1, PLAY_Notes_Line_UP_y1, PLAY_HITBOX_x2, PLAY_Notes_Line_UP_y2, notes_line, TRUE);
@@ -69,6 +68,12 @@ int Song_composition::Song(){
 		//↓ノーツ編成を決める関数
 		sc_nl.List_A(count, Hit_position);
 		DrawFormatString(180, 180, sc_cr.Black, "Count:%d", count);
+
+		//テトリスゾーンの枠組み
+		DrawBox(Play_teto_flame_x1, Play_teto_flame_y1, Play_teto_flame_x2, Play_teto_flame_y2, sc_cr.Red, FALSE);
+		DrawBox(Play_teto_flame_x1 - 3, Play_teto_flame_y1 - 3, Play_teto_flame_x2 + 3, Play_teto_flame_y2 + 3, sc_cr.Red, FALSE);
+		DrawBox(Play_teto_flame_x1 - 6, Play_teto_flame_y1 - 6, Play_teto_flame_x2 + 6, Play_teto_flame_y2 + 6, sc_cr.Red, FALSE);
+
 
 		if (CheckHitKey(KEY_INPUT_ESCAPE) == 1) {
 			count = 50000;
