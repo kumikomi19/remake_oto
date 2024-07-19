@@ -155,6 +155,7 @@
     <ClCompile Include="character_move.cpp" />
     <ClCompile Include="Home.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Notes_List.cpp" />
     <ClCompile Include="song.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <ClInclude Include="character_move.h" />
     <ClInclude Include="Home.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Notes_List.h" />
     <ClInclude Include="song.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
