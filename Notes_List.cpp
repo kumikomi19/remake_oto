@@ -33,24 +33,14 @@ int Notes_List::Notes(int count, int start, int state, int hight) {
 		DrawExtendGraph(notes_x, notes_y, notes_x + 100, notes_y + 100, NOTES, TRUE);
 	}
 
-<<<<<<< HEAD
-=======
-	if (count >= start) {
-		notes_x = notes_x - (count - start);
-			DrawExtendGraph(notes_x, notes_y, notes_x+50, notes_y+50, NOTES, TRUE);
-	}
 
 
 
->>>>>>> 6fb9482d060f5d260353a894f8765ae1e337112c
 	return 0;
 
 }
 
 void Notes_List::List_A(int count) {
 	Notes(count, 0, LEFT, UP);
-<<<<<<< HEAD
-	
-=======
->>>>>>> 6fb9482d060f5d260353a894f8765ae1e337112c
+
 }
