@@ -1,23 +1,33 @@
 #include"song.h"
-#include"Notes_List.h"
 
 
 Notes_List sc_nl;
 Color sc_cr;
+Block sc_bl;
 
 int Song_composition::Song(){
 
+	//バックグラウンドで音楽を再生
+	PlaySoundFile(SONG_A, DX_PLAYTYPE_BACK);
+
+	//各種画像の読み込み
 	int notes_line = LoadGraph(PIC_PLAY_Line);
 	int notes_hitbox = LoadGraph(PIC_PLAY_HITBOX);
-	int teto_flame = LoadGraph(PIC_PLAY_TETO_FLAME);
+	int flame = LoadGraph(PIC_PLAY_BLOCK_FLAME);
+
+	//当たり判定の初期化
 	int Hit_position = MID;
 	bool move_qualification = FALSE;
 	SetDrawScreen(DX_SCREEN_BACK);
-	for (int count = 0; count < 50000; count++) {
+
+	int start_count = GetNowCount();
+	while (1)
+	{
+		int count = GetNowCount() - start_count; //開始時刻-現在時刻をms単位で取得
 		if (ProcessMessage() != 0) { // メッセージ処理
 			break;//ウィンドウの×ボタンが押されたらループを抜ける
 		}
-		
+			
 		ClearDrawScreen();
 		//↓上中下のノーツライン
 		DrawExtendGraph(PLAY_Notes_Line_x1, PLAY_Notes_Line_UP_y1, PLAY_Notes_Line_x2, PLAY_Notes_Line_UP_y2, notes_line, TRUE);
@@ -69,14 +79,15 @@ int Song_composition::Song(){
 		sc_nl.List_A(count, Hit_position);
 		DrawFormatString(180, 180, sc_cr.Black, "Count:%d", count);
 
-		//テトリスゾーンの枠組み
-		DrawBox(Play_teto_flame_x1, Play_teto_flame_y1, Play_teto_flame_x2, Play_teto_flame_y2, sc_cr.Red, FALSE);
-		DrawBox(Play_teto_flame_x1 - 3, Play_teto_flame_y1 - 3, Play_teto_flame_x2 + 3, Play_teto_flame_y2 + 3, sc_cr.Red, FALSE);
-		DrawBox(Play_teto_flame_x1 - 6, Play_teto_flame_y1 - 6, Play_teto_flame_x2 + 6, Play_teto_flame_y2 + 6, sc_cr.Red, FALSE);
-
-
+		//テトリスゾーン
+		DrawExtendGraph(Play_flame_Top_x1, Play_flame_Top_y1, Play_flame_Top_x2, Play_flame_Top_y2,flame, TRUE);
+		DrawExtendGraph(Play_flame_R_x1, Play_flame_R_y1, Play_flame_R_x2, Play_flame_R_y2,flame, TRUE);
+		DrawExtendGraph(Play_flame_L_x1, Play_flame_L_y1, Play_flame_L_x2, Play_flame_L_y2,flame, TRUE);
+		sc_bl.Mino(T);
+		sc_bl.Draw_ALLBlock();
+		
 		if (CheckHitKey(KEY_INPUT_ESCAPE) == 1) {
-			count = 50000;
+			break;
 		}
 		ScreenFlip();
 		WaitTimer(1);

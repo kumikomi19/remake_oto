@@ -6,7 +6,10 @@
 #define PIC_PLAY_Line "pic/Play_notes_line.png"
 #define PIC_PLAY_NOTES_LEFT "pic/Play_Notes_L.png"
 #define PIC_PLAY_HITBOX "pic/Play_notes_hit.png"
-#define PIC_PLAY_TETO_FLAME "pic/Play_teto_flame"
+#define PIC_PLAY_BLOCK "pic/block_mario.png"
+#define PIC_PLAY_BLOCK_FLAME "pic/Flame.png"
+//*************↓音楽読み込み↓*************
+#define SONG_A "pic/120tempo.wav"
 
 //*************↓HOME関連↓*************
 #define Home_Tilte_x1 300
@@ -35,16 +38,28 @@
 #define PLAY_Notes_Line_BTM_y2 800
 #define LEFT 1
 #define RIGHT 2
-#define DOWN 3
+#define TURN_LEFT 3
+#define TURN_RIGHT 4
+#define DOWN 5
+
 #define UP 1
 #define MID 2
 #define UNDER 3
-#define NOTES_SPEED 5
+#define NOTES_SPEED 1//割り算で1以下の数字も使用できます
 //テトリス部門間連携
-#define Play_teto_flame_x1 1050
-#define Play_teto_flame_y1 50
-#define Play_teto_flame_x2 1550
-#define Play_teto_flame_y2 1000
+#define Play_flame_Top_x1 970
+#define Play_flame_Top_y1 10
+#define Play_flame_Top_x2 1580
+#define Play_flame_Top_y2 40
+#define Play_flame_R_x1 970
+#define Play_flame_R_y1 40
+#define Play_flame_R_x2 1000
+#define Play_flame_R_y2 900
+#define Play_flame_L_x1 1550
+#define Play_flame_L_y1 40
+#define Play_flame_L_x2 1580
+#define Play_flame_L_y2 900
+
 //*************↓OPTION関連↓*************
 #define OPSION_BOX_x1 500
 #define OPSION_BOX_y1 700

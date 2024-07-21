@@ -7,7 +7,7 @@ Color cr;
 Home hm;
 Song_composition sc;
 
-volatile Mode_State m_state = HOME;
+Mode_State m_state = HOME;
 Mode_State GetState(){
   return m_state;
 }
